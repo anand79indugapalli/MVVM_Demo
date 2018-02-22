@@ -32,7 +32,6 @@ class MovieDetailsViewController: UIViewController {
     /// Customized UI
     func setUpUI() {
         self.title = "Movie Details"
-        collectionViewMovieCast.isHidden = true
         collectionViewMovieCast.dataSource = self
         collectionViewMovieCast.delegate = self
     }
@@ -78,7 +77,7 @@ extension MovieDetailsViewController: UICollectionViewDataSource {
 extension MovieDetailsViewController: UICollectionViewDelegateFlowLayout {
     // MARK: - MovieCast DelegateFLowLayout Methods
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 120, height: 175)
+        return CGSize(width: 120, height: 200)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

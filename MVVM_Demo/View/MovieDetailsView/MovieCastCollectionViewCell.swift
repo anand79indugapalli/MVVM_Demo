@@ -13,4 +13,9 @@ class MovieCastCollectionViewCell: UICollectionViewCell {
     // MARK: - Outlets
     @IBOutlet weak var imageViewCharacterImage: UIImageView!
     @IBOutlet weak var labelNameNCharacter: UILabel!
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        customImageView(imageView: imageViewCharacterImage, color: .black, borderWidth: 3, rounding: false)
+    }
 }
