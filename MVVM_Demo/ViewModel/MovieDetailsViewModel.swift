@@ -37,8 +37,8 @@ class MovieDetailsViewModel {
         view.labelMovieTitle.text = movieDetails?.name
         view.labelMovieGenres.text = (movieDetails?.genres.isEmpty ?? true) ? "None": movieDetails?.genres.joined(separator: "/")
         view.labelMovieYear.text = String(describing: movieDetails?.year ?? 0)
-        view.labelMovieRating.text = String(describing: movieDetails?.rating ?? 0.0)
-        view.labelMovieDownloads.text = String(describing: movieDetails?.downloads ?? 0)
+        view.labelMovieRating.text = "IMDB: " + String(describing: movieDetails?.rating ?? 0.0)
+        view.labelMovieDownloads.text = "Downloads: " + String(describing: movieDetails?.downloads ?? 0)
         view.labelMovieUploaded.text = movieDetails?.uploaded
         view.labelMovieLanguage.text = movieDetails?.language
         view.labelMovieDescription.text = movieDetails?.description

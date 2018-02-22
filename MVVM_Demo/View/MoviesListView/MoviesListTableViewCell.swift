@@ -22,11 +22,7 @@ class MoviesListTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        imageViewMovieImage.layer.borderWidth = 1
-        imageViewMovieImage.layer.masksToBounds = false
-        imageViewMovieImage.layer.borderColor = UIColor.black.cgColor
-        imageViewMovieImage.layer.cornerRadius = imageViewMovieImage.frame.height / 2
-        imageViewMovieImage.clipsToBounds = true
+        customImageView(imageView: imageViewMovieImage, color: .black, borderWidth: 2, rounding: true)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

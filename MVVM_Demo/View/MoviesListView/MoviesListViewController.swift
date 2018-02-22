@@ -30,7 +30,7 @@ class MoviesListViewController: UIViewController {
     // MARK: - Button Actions
     @IBAction func threeDMoviesButtonClicked(_ sender: UIBarButtonItem) {
         moviesListViewModel.dislpay3DMovies = !moviesListViewModel.dislpay3DMovies
-        buttonThreeDMovies.title = moviesListViewModel.dislpay3DMovies ? "3D" : "All"
+        buttonThreeDMovies.title = moviesListViewModel.dislpay3DMovies ? "All" : "3D"
         fetchMoviesListAPI()
     }
     
@@ -93,19 +93,15 @@ extension MoviesListViewController: UITableViewDelegate {
 
 extension MoviesListViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print("SearchText:", searchBar.text)
         moviesListViewModel.searchText = searchBar.text
         fetchMoviesListAPI()
         searchBar.resignFirstResponder()
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        if !(moviesListViewModel.searchText?.isEmpty ?? false) {
-            moviesListViewModel.searchText = ""
-            fetchMoviesListAPI()
-        }
-        searchBar.text = ""
         moviesListViewModel.searchText = ""
+        fetchMoviesListAPI()
+        searchBar.text = ""
         searchBar.resignFirstResponder()
     }
 }

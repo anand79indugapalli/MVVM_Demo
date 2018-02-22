@@ -21,4 +21,8 @@ class MovieDetailsView: UIView {
     @IBOutlet weak var labelMovieUploaded: UILabel!
     @IBOutlet weak var labelMovieDescription: UILabel!
 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        customImageView(imageView: imageViewMovieImage, color: .white, borderWidth: 5, rounding: false)
+    }
 }

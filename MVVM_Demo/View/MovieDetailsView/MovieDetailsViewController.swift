@@ -12,6 +12,7 @@ class MovieDetailsViewController: UIViewController {
 
     // MARK: - Outlets
     @IBOutlet weak var viewMovieDetails: MovieDetailsView!
+    @IBOutlet weak var viewCastDetails: UIView!
     @IBOutlet weak var collectionViewMovieCast: UICollectionView!
 
     // MARK: - Variables
@@ -30,7 +31,7 @@ class MovieDetailsViewController: UIViewController {
     // MARK: - Initializing UI
     /// Customized UI
     func setUpUI() {
-        self.title = "Movie"
+        self.title = "Movie Details"
         collectionViewMovieCast.isHidden = true
         collectionViewMovieCast.dataSource = self
         collectionViewMovieCast.delegate = self
@@ -40,7 +41,7 @@ class MovieDetailsViewController: UIViewController {
     func displayMovieDetails() {
         movieDetailsViewModel.displayMovieDetails(view: viewMovieDetails)
         if movieDetailsViewModel.castCount == 0 {
-            collectionViewMovieCast.isHidden = true
+            viewCastDetails.isHidden = true
         }
     }
 
