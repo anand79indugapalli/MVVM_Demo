@@ -126,8 +126,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7u9-qQ-DsU"/>
                     </view>
-                    <navigationItem key="navigationItem" id="REG-9V-4uY"/>
+                    <navigationItem key="navigationItem" id="REG-9V-4uY">
+                        <barButtonItem key="rightBarButtonItem" title="3D" id="QnQ-bf-3vR">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="threeDMoviesButtonClicked:" destination="oxU-Lt-TJC" id="Oal-ct-76o"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="buttonThreeDMovies" destination="QnQ-bf-3vR" id="qNM-ih-Hhu"/>
                         <outlet property="tableViewMoviesList" destination="L3z-Ah-EDa" id="Iyb-K2-UXR"/>
                     </connections>
                 </viewController>

@@ -11,14 +11,35 @@ import Foundation
 class MoviesListViewModel {
 
     // MARK: - Variables
-    let base_Url = "https://yts.am/api/v2/list_movies.json?"
     var moviesList: [MoviesList] = []
+    var dislpay3DMovies: Bool = false
+    var searchText: String?
+
+    var searchUrl: String {
+        var base_Url = "https://yts.am/api/v2/list_movies.json?"
+        
+        if dislpay3DMovies {
+            base_Url = base_Url + "quality=3D"
+        }
+        if searchText != nil {
+            if base_Url.contains("quality=3D") {
+                base_Url = base_Url + "&query_term=\(String(describing: searchText!))"
+            } else {
+                base_Url = base_Url + "query_term=\(String(describing: searchText!))"
+            }
+        }
+
+        return base_Url
+    }
     
     func getMoviesList(_ completionHandler: @escaping(String?, Bool) -> Void) {
-        NetworkManager.shared.requestFor(url: base_Url, param: nil, httpMethod: .get, headerParam: nil, success: { (response) in
+        print(searchUrl)
+        NetworkManager.shared.requestFor(url: searchUrl, param: nil, httpMethod: .get, headerParam: nil, success: { (response) in
             let data = response["data"] as? [String: Any]
             if let arrData = data?["movies"] as? [NSDictionary] {
                 self.moviesList = arrData.map { MoviesList($0)}
+            } else {
+                self.moviesList.removeAll()
             }
             completionHandler("", true)
         }, failure: { (failureResponse) in

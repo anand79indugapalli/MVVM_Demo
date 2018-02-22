@@ -20,4 +20,5 @@ class MovieDetailsView: UIView {
     @IBOutlet weak var labelMovieDownloads: UILabel!
     @IBOutlet weak var labelMovieUploaded: UILabel!
     @IBOutlet weak var labelMovieDescription: UILabel!
+
 }

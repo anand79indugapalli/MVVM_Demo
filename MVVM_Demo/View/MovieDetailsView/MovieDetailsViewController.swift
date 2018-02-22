@@ -17,10 +17,11 @@ class MovieDetailsViewController: UIViewController {
     // MARK: - Variables
     var movieDetailsViewModel = MovieDetailsViewModel()
     var movieId: Int?
-    
+
     // MARK: - Lifecycle Method
     override func viewDidLoad() {
         super.viewDidLoad()
+
         showProgressHub()
         getMovieDetails()
         setUpUI()
@@ -29,10 +30,22 @@ class MovieDetailsViewController: UIViewController {
     // MARK: - Initializing UI
     /// Customized UI
     func setUpUI() {
+        self.title = "Movie"
+        collectionViewMovieCast.isHidden = true
         collectionViewMovieCast.dataSource = self
         collectionViewMovieCast.delegate = self
     }
 
+    /// displayMovieDetails
+    func displayMovieDetails() {
+        movieDetailsViewModel.displayMovieDetails(view: viewMovieDetails)
+        if movieDetailsViewModel.castCount == 0 {
+            collectionViewMovieCast.isHidden = true
+        }
+    }
+
+    // MARK: - API Methods
+    /// getting Movie Details API
     func getMovieDetails() {
         movieDetailsViewModel.fetchMovieDetails(movieId: movieId!, { (responseMessage, success) in
             if success {
@@ -46,13 +59,10 @@ class MovieDetailsViewController: UIViewController {
         })
     }
 
-    func displayMovieDetails() {
-        movieDetailsViewModel.displayMovieDetails(view: viewMovieDetails)
-    }
-    
 }
 
 extension MovieDetailsViewController: UICollectionViewDataSource {
+    // MARK: - MovieCast DataSource Methods
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return movieDetailsViewModel.castCount
     }
@@ -65,6 +75,7 @@ extension MovieDetailsViewController: UICollectionViewDataSource {
 }
 
 extension MovieDetailsViewController: UICollectionViewDelegateFlowLayout {
+    // MARK: - MovieCast DelegateFLowLayout Methods
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 120, height: 175)
     }
